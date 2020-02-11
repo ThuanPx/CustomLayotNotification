@@ -71,6 +71,7 @@ class ExampleService : Service() {
 
     private fun updateNotification(bat: String, tempC: Float) {
         val tempF = (tempC * 9 / 5) + 32
+        val cpu = Utils.getCPUInfo()
         val tempCPUC = Utils.cpuTemperature()
         val tempCPUF = (tempCPUC * 9 / 5) + 32
 
@@ -93,7 +94,7 @@ class ExampleService : Service() {
             0, notificationIntent, 0
         )
         val notification: Notification = NotificationCompat.Builder(this, "201")
-            .setSmallIcon(R.drawable.ic_android)
+            .setSmallIcon(android.R.color.transparent)
             .setStyle(NotificationCompat.DecoratedCustomViewStyle())
             .setCustomContentView(tempNotificationLayout)
             .setContentIntent(pendingIntent)
